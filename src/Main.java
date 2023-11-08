@@ -1,3 +1,7 @@
+import controller.CustomerController;
+import controller.EmployeeController;
+import controller.ReservationController;
+import controller.RoomController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,6 +15,11 @@ public class Main extends Application {
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "admin123";
     private Stage primaryStage;
+
+    private CustomerController customerController;
+    private EmployeeController employeeController;
+    private RoomController roomController;
+    private ReservationController reservationController;
     
     public static void main(String[] args) {
         launch(args);
@@ -20,6 +29,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Hotel Management System");
+
+        // Create instances of controllers
+        customerController = new CustomerController();
+        employeeController = new EmployeeController();
+        roomController = new RoomController();
+        reservationController = new ReservationController(customerController, roomController);
+
 
         // Create a login scene
         createLoginScene();
@@ -69,23 +85,53 @@ public class Main extends Application {
         Button reservationButton = new Button("Reservation Controller");
         
         customerButton.setOnAction(e -> {
-            // Implement functionality to access and control CustomerController
+            // Implement functionality for the Customer Controller
+            // For example, open a new window to manage customers
+            openCustomerManagementWindow();
         });
-        
+
         employeeButton.setOnAction(e -> {
-            // Implement functionality to access and control EmployeeController
+            // Implement functionality for the Employee Controller
+            // For example, open a new window to manage employees
+            openEmployeeManagementWindow();
         });
-        
+
         roomButton.setOnAction(e -> {
-            // Implement functionality to access and control RoomController
+            // Implement functionality for the Room Controller
+            // For example, open a new window to manage rooms
+            openRoomManagementWindow();
         });
-        
+
         reservationButton.setOnAction(e -> {
-            // Implement functionality to access and control ReservationController
+            // Implement functionality for the Reservation Controller
+            // For example, open a new window to manage reservations
+            openReservationManagementWindow();
         });
         
         adminLayout.getChildren().addAll(customerButton, employeeButton, roomButton, reservationButton);
         Scene adminScene = new Scene(adminLayout, 600, 400);
         primaryStage.setScene(adminScene);
+    }
+
+    // Methods to open management windows for each controller
+    private void openCustomerManagementWindow() {
+        // Implement code to open a new window for managing customers
+        // You can use JavaFX Stages and Scenes for this purpose
+        // Example: new CustomerManagementStage(customerController).show();
+    }
+
+    private void openEmployeeManagementWindow() {
+        // Implement code to open a new window for managing employees
+        // Example: new EmployeeManagementStage(employeeController).show();
+    }
+
+    private void openRoomManagementWindow() {
+        // Implement code to open a new window for managing rooms
+        // Example: new RoomManagementStage(roomController).show();
+    }
+
+    private void openReservationManagementWindow() {
+        // Implement code to open a new window for managing reservations
+        // Example: new ReservationManagementStage(reservationController).show();
     }
 }

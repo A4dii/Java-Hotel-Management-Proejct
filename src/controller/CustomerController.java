@@ -18,6 +18,11 @@ public class CustomerController {
         saveCustomersToCSV();
     }
 
+    public void deleteCustomer(Customer customer) {
+        customers.remove(customer); // Remove the customer from the list
+        saveCustomersToCSV(); // Update the CSV file
+    }
+
     public List<Customer> getAllCustomers() {
         return customers;
     }

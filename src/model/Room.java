@@ -37,7 +37,7 @@ public class Room {
         this.price = price; 
     }
 
-    public boolean isAvailable(){
+    public boolean checkAvailabilty(){
         return isAvailable;
     }
 
